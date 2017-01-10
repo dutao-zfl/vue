@@ -1,5 +1,5 @@
 <template>
-    <div a>
+    <div id="a" class="fade2">
         你好，我是张三
         <img src="../static/img/hello.png">
     </div>
@@ -7,9 +7,12 @@
 
 
 <script>
-    export default {
-        mounted(){
-            console.log(_.now())
+    $.ajax({
+        url:'url',
+        notSend:true,//表示不触发全局loading
+        success:function () {
+            //...do something
+            $('#a').addClass('in')
         }
-    }
+    })
 </script>

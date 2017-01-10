@@ -1,4 +1,11 @@
 {
-  "plugins": ["vue"],
-  "extends": ["elemefe"]
+  "plugins": [
+    "vue"
+  ],
+  "parser": "babel-eslint",
+  "extends": "eslint:recommended",
+  "rules": {
+    "no-unused-vars": 0,
+    "no-undef": 0
+  }
 }
