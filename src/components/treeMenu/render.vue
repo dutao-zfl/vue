@@ -235,6 +235,9 @@
                 this.rest;
             }
         },
+        mounted(){
+            this.rest;
+        },
         computed:{
             rest(){
                 new treeView({

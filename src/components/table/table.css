@@ -1,0 +1,50 @@
+.tableModel form{
+    padding-right: 0;
+}
+.tableModel .btn{
+	border-radius:0px;
+}
+.tableModel .tableDiv .btn{
+	border-radius:0px
+}
+.tableModel .bottomBtn{
+    margin: 5px;
+}
+.tableModel .searchType{
+	border-radius:0px;
+	height:31px !important;
+}
+/* .tableModel input[placeholder]{
+	border-radius:0px !important;
+	height:31px !important;
+	width:25% !important;
+} */
+.tableModel .bottomBtn .btn{
+    margin-right:5px ;
+    border-radius:0px;
+}
+.tableModel .form-group{
+    vertical-align: top;
+}
+.tableModel .dropdown-menu{
+    left: auto;
+    right: 0;
+}
+.tableModel table .dropdown-menu{
+    margin-top: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    width: 100%;
+}
+.tableModel table thead td:nth-child(1) .dropdown-menu,
+.tableModel table thead td:nth-child(2) .dropdown-menu,
+.tableModel table thead td:nth-child(3) .dropdown-menu
+{
+    left: 0;
+}
+.pagination>li:last-child>a, .pagination>li:last-child>span{
+	border-radius:0px;
+}
+.pagination>li:first-child>a, .pagination>li:first-child>span{
+	border-radius:0px;
+}
