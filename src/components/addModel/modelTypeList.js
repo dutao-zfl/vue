@@ -1,0 +1,28 @@
+define({
+  /*自定义*/
+  '基础表格':'baseTable',
+  '列表':'table',
+  '记录':'record',
+  '环形':'ring',
+  '自定义模块':'custom',
+  /*坐标图*/
+  '多边形图':'polygon',
+  '面积图':'area',
+  '曲线图':'spline',
+  '折线图':'line',
+  '柱状图':'column',
+  '条形图':'bar',
+  '散点图':'scatter',
+  '气泡图':'bubble',
+  '热力图':'heatmap',
+  '瀑布图':'waterfall',
+  '箱线图':'boxplot',
+  '误差图':'errorbar',
+  '柱形范围图':'columnrange',
+  '面积范围图':'arearange',
+  /*非坐标图*/
+  '饼图':'pie',
+  '漏斗图':'funnel',
+  '矩形树图':'treemap',
+  '金字塔图':'pyramid',
+});
