@@ -8,7 +8,7 @@ export default Backbone.View.extend({
 				'	let ischild=val.children&&val.children.length;' +
 				'%>' +
 				'	<li data-asyncUrl="<%=val.asyncUrl%>" >' +
-				'		<a data-selected="<%=val.selected%>" onclick="<%=val.onclick%>" ' +
+				'		<a href="#<%=router+val.resKey%>" data-selected="<%=val.selected%>" onclick="<%=val.onclick%>" ' +
 				'<%_.each(val.prop,function(v,k){%>' +
 				'	<%=k+"="+v+" "%>' +
 				'<%})%>> ' +
@@ -120,12 +120,13 @@ export default Backbone.View.extend({
 		},
 		createTree:function(list){
 			let self=this;
+			let router=self.model.get('router');
 			let html='';
 			_.each(list,function(val,key){
 				if(val.children&&val.children.length){
 					val.childrenHtml='<ul  class="submenu">'+self.createTree(val.children)+'</ul>';
 				}
-				html+=self.treeTemplate({data:[val],hideIcon:self.model.get('hideIcon')});
+				html+=self.treeTemplate({data:[val],hideIcon:self.model.get('hideIcon'),router:router});
 			});
 			return html;
 		},

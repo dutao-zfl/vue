@@ -1,19 +1,15 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import Jquery from 'jquery'
-import Underscore from 'underscore';
-import Backbone from 'backbone';
 import store from './store';
-import JqueryConfig from './config/jqueryConfig'
-
-window.$ = window.jQuery = Jquery;
-window._ = Underscore;
-window.Backbone = Backbone;
-
+import 'jquery'
+import 'underscore';
+import 'backbone';
+import './config/jqueryConfig'
 
 import Home from './pages/home.vue';
 import LeftMenu from './pages/leftMenu.vue';
 import RightBody from './pages/rightBody.vue';
+import Breadcrumb from './pages/Breadcrumb.vue';
 
 
 Vue.use(VueRouter);
@@ -32,7 +28,10 @@ const routes = [
                 {
                     path: ':key',
                     name: 'three',
-                    component: RightBody
+                    components: {
+                        Breadcrumb,
+                        RightBody
+                    }
                 }
             ]
         }]
