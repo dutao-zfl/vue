@@ -7,7 +7,6 @@ define([
         'backbone'
     ],
     function ($, _, Backbone) {
-
         var model = Backbone.Model.extend({
             defaults: {
                 savePage: system_path + '/config/saveTemplate.shtml',

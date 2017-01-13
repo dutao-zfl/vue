@@ -75,7 +75,7 @@ define([
         $('body').off('click',hideDomStr);
         $('body').off('click',showDomStr);
     } ;
-//用于控制左边栏目录结构的显示与隐藏
+    //用于控制左边栏目录结构的显示与隐藏
     function toggleTree(param){
         var sParent ='#display-view';
         var sTree ='#tree';
@@ -120,8 +120,10 @@ define([
             resKey:'',
             onload:function(){}
         },appendModel,model);
+
         defmodel.el.empty().off().addClass('fade2');
         defmodel.model.isOption=false;
+
         if(defmodel.model.appendParam){
             defmodel.model.appendParam.id && (delete  defmodel.model.appendParam.id)
             defmodel.model.appendParam.resKey && (delete  defmodel.model.appendParam.resKey)

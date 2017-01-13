@@ -11,14 +11,13 @@
     </div>
 </template>
 
-<script type="text/ecmascript-6">
+<script>
     import TreeRender from '../components/treeMenu/render.vue';
 
     export default {
-
         data(){
             return {
-                id:this.$route.params.id
+               id:this.$route.params.id
             }
         },
         components: {
@@ -35,12 +34,7 @@
             },
             menus(){
                 let id = this.id;
-                console.log(1);
-                let menu = this.data.filter(
-                    function (v) {
-                        return v.id == id
-                    }
-                );
+                let menu = this.data.filter(v=>v.id==id);
                 return menu && menu[0] && menu[0].children
             }
         },
