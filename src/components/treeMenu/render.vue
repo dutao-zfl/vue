@@ -271,7 +271,6 @@
         },
         computed: {
             rest(){
-                console.log(2);
                 new treeView({
                     el: this.$el,
                     model: new treeModel({list: this.list, router: '/' + this.$route.params.id + '/'})
