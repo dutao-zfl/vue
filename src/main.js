@@ -1,17 +1,15 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import Jquery from 'jquery'
-import Underscore from 'underscore';
-import Backbone from 'backbone';
 import store from './store';
-import JqueryConfig from './config/jqueryConfig'
+import 'jquery'
+import 'underscore';
+import 'backbone';
+import './config/jqueryConfig'
 
 import Home from './pages/home.vue';
 import LeftMenu from './pages/leftMenu.vue';
 import RightBody from './pages/rightBody.vue';
-
-window.$ = window.jQuery = Jquery;
-window._ = Underscore;
+import Breadcrumb from './pages/Breadcrumb.vue';
 
 
 Vue.use(VueRouter);
@@ -20,14 +18,20 @@ const Bar = {template: '<div>{{this.$route.params.key}}</div>'};
 const routes = [
     {
         path: '/',
+        name:'one',
         component: Home,
         children: [{
             path: ':id',
+            name:'two',
             component: LeftMenu,
             children: [
                 {
                     path: ':key',
-                    component: RightBody
+                    name: 'three',
+                    components: {
+                        Breadcrumb,
+                        RightBody
+                    }
                 }
             ]
         }]
@@ -35,8 +39,8 @@ const routes = [
 ];
 
 const router = new VueRouter({
-    mode: 'history',//启用history模式
-    routes // （缩写）相当于 routes: routes
+    //mode: 'history',
+    routes
 });
 
 

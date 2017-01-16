@@ -1,0 +1,59 @@
+<div class="x_panel tableModel">
+    <div class="tableDiv">
+        <div class="x_title" style="display:<%=data.showTitle?'block':'none'%>">
+            <h2 class="col-md-2"><%=data.title%></h2>
+
+            <form class="col-md-10 form-inline text-right" id="<%=data.grid.gridid%>_search" class="form-inline">
+                <%if(hasSearch){%>
+                <select class="searchType" style="vertical-align: middle">
+                    <%_.each(data.grid.column,function(val,key){%>
+                    <%if(val.noSearch){return}%>
+                    <option value="<%=val.colkey%>"><%=val.name%></option>
+                    <%})%>
+                </select>
+                <input type="text" placeholder="请输入关键字进行模糊搜索" style="    vertical-align: middle;border-radius:0px;height:31px;width:25%;">
+
+                <div class="form-group">
+                    <input type="submit" class="btn btn-info searchBtn" value="搜索" onclick="return false">
+                </div>
+                <%}
+                var moreList='';
+                var btnNum=0;
+                var buttomList='';
+                var btnLength=data.btn.length===4?4:3;
+                _.each(data.btn,function(val,key){
+                if(!val.position&&btnNum<btnLength){
+                ++btnNum;%>
+                <div class="form-group">
+                    <div class="btn btn-info" id="btn-<%=val.btnId%>"></div>
+                </div>
+                <%}else if(val.position=='bottom'){
+                buttomList += '<div class="form-group"><div class="btn btn-info" id="btn-'+val.btnId+'"></div></div>';
+                }else{
+                moreList += '<li><a id="btn-'+val.btnId+'"></a></li>';
+                }
+                });
+                if(moreList){%>
+                <div class="form-group dropdown">
+                    <div class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" style="margin:0">
+                        更多
+                        <span class="caret"></span>
+                    </div>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                        <%=moreList%>
+                    </ul>
+                </div>
+                <%}%>
+            </form>
+            <div class="clearfix"></div>
+        </div>
+        <div class="grid_list" id="<%=data.grid.gridid%>"></div>
+        <div class="grid_page" id="<%=data.grid.gridid%>_page" style="display:<%=data.showPage?'block':'none'%>"></div>
+        <%if(buttomList){%>
+        <div class="form-inline bottomBtn">
+            <%=buttomList%>
+        </div>
+        <%}%>
+    </div>
+    <div class="contentDiv" style="display: none;"></div>
+</div>

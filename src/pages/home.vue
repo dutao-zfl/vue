@@ -1,42 +1,42 @@
 <style lang="less">
-
+    @import "/src/plugin/fontAwesome/css/font-awesome.min.css";
+    body, ul {
+        margin: 0;
+        padding: 0;
+        font-family: Roboto, Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', '\\5FAE软雅黑', Arial, sans-serif;
+    }
 </style>
 
 <template>
     <div>
-        <!--likeV
-        <input @click="del" type="button" value="del">-->
         <top-nav></top-nav>
         <router-view></router-view>
     </div>
 </template>
 
-<script type="text/ecmascript-6">
+<script>
     import topNav from './topNav.vue';
     import leftMenu from './leftMenu.vue';
+    import menu from '../config/menu.json';
 
+    window.system_path='snc-system';
     module.exports = {
-        beforeRouteEnter: function (to, from, next) {
-            $.get('/snc-system/resources/reslist.shtml', {}, function (d) {
-                next(function (vm) {
-                    vm.$store.commit('setData',{data: JSON.parse(d)})
-                });
+        beforeRouteEnter (to, from, next) {
+            /*$.get('/snc-system/resources/reslist.shtml', {}, function (d) {
+             next(function (vm) {
+             vm.$store.commit('setData',{data: JSON.parse(d)})
+             });
+             });*/
+            next(function (vm) {
+                vm.$store.commit('setData', {data: menu})
             });
         },
         components: {
-            topNav: topNav,
-            leftMenu:leftMenu
+            topNav,
+            leftMenu,
         },
-        computed:{
-            top: function () {
-                return this.$store.state.data
-            },
+        computed: {
         },
-        methods: {
-            del: function () {
-                this.$store.commit('pop')
-            }
-        },
-
+        methods: {},
     }
 </script>
