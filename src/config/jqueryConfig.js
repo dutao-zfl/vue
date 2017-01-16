@@ -27,7 +27,16 @@ const customPage={
             '/snc-system/regionManage/addUI.shtml':addNewPath+'scope_add',//系统管理-系统基础管理-域管理
             '/snc-system/config/addUI.shtml':addNewPath+'assembly_add',//系统管理-系统基础管理-添加组件/界面配置
             '/snc-system/datasource/add.shtml':addNewPath+'data_add',//系统管理-系统基础管理-数据源
-
+            '/snc-system/dictionary/addUI.shtml':addNewPath+'dictionaries_add',//系统管理-数据字典管理-字典列表
+            /***************************************************/
+            '/snc-amp/devconfig/templatesManage/add.shtml':addNewPath+'templatesManage_add',//配置管理-配置管理-模板管理
+            '/snc-amp/devconfig/hostsManage/addUI.shtml':addNewPath+'hostsManage_add',//配置管理-配置管理-主机管理
+            '/snc-amp/config/groups/add.shtml':addNewPath+'config_groups_add',//配置管理-配置管理-主机组管理
+            '/snc-amp/config/deviceType/add_edit.shtml':addNewPath+'deviceType_add',//配置管理-配置管理-设备类型管理
+            '/snc-amp/devconfig/proxyHost/addPage.shtml':addNewPath+'proxyHost_add',//配置管理-配置管理-代理主机管理
+            '/snc-amp/devconfig/noticeManage/add.shtml':addNewPath+'noticeManage_add',//配置管理-配置管理-通知管理
+            '/snc-amp/devconfig/actionManage/add.shtml':addNewPath+'actionManage_add',//配置管理-配置管理-动作管理
+            /***************************************************/
         }
     }
 };
@@ -40,7 +49,7 @@ const getModuleUrl=(url)=>{
         Object.keys(group).map(v1=>{
             let fn=group[v1];//功能节点
             Object.keys(fn).map(v2=>{
-                if(v2==url){
+                if(url.indexOf(v2)>=0) {
                     result = fn[v2]; //api节点
                 }
             })
