@@ -5,20 +5,19 @@ export default Backbone.View.extend({
 		treeTemplate:(function(){
 			return _.template(
 				'<%_.each(data,function(val,key){' +
-				'	let ischild=val.children&&val.children.length;' +
-				'%>' +
+				'	let ischild=val.children&&val.children.filter(function(obj){return obj.type<2}).length;%>' +
 				'	<li data-asyncUrl="<%=val.asyncUrl%>" >' +
-				'		<a href="#<%=router+val.resKey%>" data-selected="<%=val.selected%>" onclick="<%=val.onclick%>" ' +
-				'<%_.each(val.prop,function(v,k){%>' +
-				'	<%=k+"="+v+" "%>' +
-				'<%})%>> ' +
+				'		<a <%if(val.resUrl!==val.resKey){%>href="#<%=router+val.resKey%>"<%}%> data-selected="<%=val.selected%>" onclick="<%=val.onclick%>" ' +
+				'	<%_.each(val.prop,function(v,k){%>' +
+				'		<%=k+"="+v+" "%>' +
+				'	<%})%>> ' +
 				'			<i class="menu-icon <%if(val.icon){%><%=\'fa \'+val.icon%><%}%> <%if(ischild){%>more<%}%>"></i> ' +
 				'			<span class="menu-name"  title="<%=val.name%>"> <%=val.name%> </span> ' +
 				'			<%if(ischild&&val.rank==1&&!hideIcon){%>' +
 				'			<b class="arrow fa fa-angle-down"></b> ' +
 				'			<%}%>' +
 				'		</a>' +
-				'		<%=val.childrenHtml%>' +
+				'		<%=ischild?val.childrenHtml:""%>' +
 				'	</li>' +
 				'<%})%>'
 			)
@@ -223,10 +222,10 @@ export default Backbone.View.extend({
 			}
 			return newObj
 		},
-		dataTransform:function(_list){
+		dataTransform:function(_list,_parentKey){
 			let self=this;
 			let model=self.model;
-			let parentKey=model.get('parentKey');
+			let parentKey=model.get('parentKey')||_parentKey;
 			let childKey=model.get('childKey');
 			let list=_list||model.get('list');
 			if(!parentKey){

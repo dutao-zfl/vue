@@ -15,30 +15,21 @@
     import TreeRender from '../components/treeMenu/render.vue';
 
     export default {
-
-        data(){
-            return {
-                id:this.$route.params.id
-            }
-        },
         components: {
             TreeRender
-        },
-        watch:{
-            $route(){
-                this.id=this.$route.params.id
-            }
         },
         computed: {
             data(){
                 return this.$store.state.data
             },
+            resKey(){
+                return this.$route.params.id
+            },
             menus(){
-                let id = this.id;
-                console.log(1);
+                let resKey = this.resKey;
                 let menu = this.data.filter(
                     function (v) {
-                        return v.id == id
+                        return v.resKey == resKey
                     }
                 );
                 return menu && menu[0] && menu[0].children

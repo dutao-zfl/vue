@@ -56,7 +56,7 @@
         </div>
         <ul>
             <li v-for="menu in menus" :key="menu.id">
-                <router-link :to="'/'+menu.id">{{menu.name}}</router-link>
+                <router-link :to="'/'+menu.resKey">{{menu.name}}</router-link>
             </li>
         </ul>
     </nav>

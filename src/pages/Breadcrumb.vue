@@ -12,8 +12,10 @@
 
 <template>
     <div class="Breadcrumb">
-        <span v-if="hash.id">{{hash.id}}</span>
-        <router-link v-if="hash.key" :to="'/'+hash.id+'/'+hash.key">/{{hash.key}}</router-link>
+        <span v-for="item in showFind">
+            <template v-if="item===showFind[showFind.length-1]">{{item}}</template>
+            <template v-else="">{{item}}/</template>
+        </span>
     </div>
 </template>
 
@@ -26,8 +28,34 @@
             },
             menu(){
                 return this.$store.state.data
+            },
+            showFind(){
+                let data=this.find(this.menu);
+                console.log(data,this.$route);
+                return data
             }
         },
-        methods: {}
+        mounted(){
+        },
+        methods: {
+            find(_data){
+                var path=[];
+                var data=_data||this.menu;
+                for(var i=0;i<data.length;i++){
+                    let relay=data[i];
+                    if(relay.resKey===this.hash.key){
+                        return [relay.name];
+                    }else{
+                        let childData=relay.children;
+                        let childObj=childData&&childData.length&&this.find(childData);
+                        if(childObj&&childObj.length){
+                            path.push(relay.name);
+                            path=path.concat(childObj);
+                        }
+                    }
+                }
+                return path
+            }
+        }
     }
 </script>
