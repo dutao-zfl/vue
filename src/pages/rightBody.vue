@@ -113,7 +113,7 @@
                 "mid": "xin_mm",
                 "alias": "系统管理-系统基础管理-添加组件"
             }}
-        },*/
+        },*/  
         computed: {
             hash(){
                 return this.$route.params
